@@ -7,7 +7,7 @@ export const addOrderItems=asyncHandler(async(req,res)=>{
     // console.log(req.body)
     if(orderItems && orderItems.length===0){
         res.status(401)
-        throw new Error("Order item aj nadi ja gend marav")
+        throw new Error("Order item not added...")
     }
 
     const order=await Order({shippingPrice,orderItems,user:req.user._id,paymentMethod,itemsPrice,taxPrice,
@@ -47,7 +47,7 @@ export const updateOrderItems=asyncHandler(async(req,res)=>{
         }
         else{
         res.status(404)
-        throw new Error("Could not update")
+        throw new Error("Could not update order item...")
         }
 })
 
@@ -83,6 +83,6 @@ export const updateOrderToDelivered=asyncHandler(async(req,res)=>{
     }
     else{
     res.status(404)
-    throw new Error("Could not update")
+    throw new Error("Could not update deliverable order...")
     }
 })
