@@ -48,17 +48,21 @@ app.get("/api/config/paypal",(req,res)=>{
     res.send(process.env.PAYPAL_CLIENT_ID)
 })
 
-if(process.env.NODE_ENV==="Production"){
-    app.use(express.static(path.join(__dirname,"/frontend/build")))
+// if(process.env.NODE_ENV==="Production"){
+    // console.log("__dirname",path.join(__dirname,"/frontend/build/index.html"))
+    // app.use(express.static(path.join(__dirname,"/frontend/build")))
+    let STATIC = path.resolve(__dirname,'build')
+    let INDEX = path.resolve(STATIC,'index.html')
+    app.use(express.static(STATIC))
     app.get("*",(req,res)=>{
-        res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
+        res.sendFile(INDEX)
     })
-}else{
-    app.get("/",(req,res)=>{
-        res.send(`${products[0].name}`)
-        process.exit(1)
-    })
-}
+// }else{
+//     app.get("/",(req,res)=>{
+//         res.send(`${products[0].name}`)
+//         process.exit(1)
+//     })
+// }
 
 console.log(path.resolve());
 
