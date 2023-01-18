@@ -66,9 +66,9 @@ app.get("/api/config/paypal",(req,res)=>{
 
 console.log(path.resolve());
 
-app.use(notFound)
+// app.use(notFound)
 
-app.use(errorHandler)
+// app.use(errorHandler)
 
 const port=process.env.port || 5000;
 app.listen(port,console.log("Server chalu che".yellow.bold))
