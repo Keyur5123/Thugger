@@ -66,6 +66,6 @@ app.use(notFound)
 
 app.use(errorHandler)
 
-const port=process.env.port;
+const port=process.env.port || 5000;
 app.listen(port,console.log("Server chalu che".yellow.bold))
 
