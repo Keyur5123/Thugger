@@ -18,8 +18,8 @@ export const protect=asyncHandler(async(req,res,next)=>{
         throw new Error("token not authorized")
     }
     if(!token){
-        console.log("Token nathi");
-        throw new Error("error aavyo che")
+        // console.log("Token nathi");
+        throw new Error("You don't have token...")
     }
     // console.log(user)
     next()
@@ -31,6 +31,6 @@ export const admin=asyncHandler(async(req,res,next)=>{
     }
     else{
         res.status(401)
-        throw new Error("Ala tu Admin nadi")
+        throw new Error("You are not admin.")
     }
 })
