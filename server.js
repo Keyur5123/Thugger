@@ -64,8 +64,6 @@ app.get("/api/config/paypal",(req,res)=>{
 //     })
 // }
 
-console.log(path.resolve());
-
 // app.use(notFound)
 
 // app.use(errorHandler)
