@@ -21,7 +21,7 @@ export const getProductById=asyncHandler(async(req,res)=>{
         res.json(product)
     }else{
         res.status(404)
-        throw new Error("chuda nadi")
+        throw new Error("product not found")
     }
 })
 
@@ -29,10 +29,10 @@ export const deleteProductByAdmin=asyncHandler(async(req,res)=>{
     const product=await Products.findById(req.params.id);
     if(product){
         await product.remove()
-        res.json({message:"Delete thai gayu"})
+        res.json({message:"product removed successfully"})
     }else{
         res.status(404)
-        throw new Error("Remove ni thai")
+        throw new Error("product doesn't removed successfully")
     }
 })
 
@@ -73,7 +73,7 @@ export const updateProduct=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(404)
-        throw new Error("product ni malyu")        
+        throw new Error("product not updated")        
     }
 })
 
@@ -102,7 +102,7 @@ export const createProductReviews=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(404)
-        throw new Error("product ni malyu")        
+        throw new Error("review not updated")        
     }
 })
 
