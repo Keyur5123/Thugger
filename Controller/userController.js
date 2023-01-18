@@ -7,7 +7,7 @@ export const createUser=asyncHandler(async(req,res)=>{
     const userExists=await User.findOne({email})
     if(userExists){
         res.status(404)
-        throw new Error("pilla thi aj user che")
+        throw new Error("User Already Exists.")
     }
     const user=await User.create({
         name,
@@ -25,7 +25,7 @@ export const createUser=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(400)
-        throw new Error("User data invalid che")
+        throw new Error("Error occure while creating user")
     }
 })
 
@@ -82,13 +82,9 @@ export const getUserByAdmin=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(404)
-        throw new Error("User not found")
+        throw new Error("Admin not found")
     }
-    
-    
-
 })
-
 
 export const updateUserProfile=asyncHandler(async(req,res)=>{
     const user =await User.findById(req.user._id)
@@ -110,11 +106,8 @@ export const updateUserProfile=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(404)
-        throw new Error("User not found")
+        throw new Error("Error occure while updating user profile")
     }
-    
-    
-
 })
 
 export const updateUserByAdmin=asyncHandler(async(req,res)=>{
@@ -136,7 +129,7 @@ export const updateUserByAdmin=asyncHandler(async(req,res)=>{
     }
     else{
         res.status(404)
-        throw new Error("User not found")
+        throw new Error("Error occure while updating admin profile")
     }
     
     
